@@ -1,6 +1,9 @@
 package com.company;
 
 public class Truck extends Car {
+
+    public Human owner;
+
     Double capacityInTones;
     Double actualCargoWeight;
     Double drivingTimeInHours;
@@ -49,4 +52,26 @@ public class Truck extends Car {
     }
 
 
+    @Override
+    public Double getPrice() {
+        return 250000.0;
+    }
+
+    @Override
+    public Human getOwner() {
+        return this.owner;
+    }
+
+    @Override
+    public void sell(Human buyer) throws Exception {
+        if (buyer.cash < this.getPrice()) {
+            throw new Exception("You don't have enough cash " + buyer.firstName);
+
+        } else {
+            this.owner.cash += this.getPrice();
+            buyer.cash -= this.getPrice();
+            this.owner = buyer;
+        }
+
+    }
 }

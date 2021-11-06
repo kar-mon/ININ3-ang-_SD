@@ -17,4 +17,19 @@ public class PersonalCar extends Car {
     public void changeWheels() {
         System.out.println("4 wheels changed");
     }
+
+    @Override
+    public Double getPrice() {
+        return null;
+    }
+
+    @Override
+    public Human getOwner() {
+        return null;
+    }
+
+    @Override
+    public void sell(Human buyer) throws Exception {
+
+    }
 }

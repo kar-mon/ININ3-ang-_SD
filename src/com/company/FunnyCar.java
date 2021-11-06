@@ -15,4 +15,19 @@ public class FunnyCar extends Car {
     public void changeWheels() {
         System.out.println("some wheels are changed");
     }
+
+    @Override
+    public Double getPrice() {
+        return null;
+    }
+
+    @Override
+    public Human getOwner() {
+        return null;
+    }
+
+    @Override
+    public void sell(Human buyer) throws Exception {
+
+    }
 }

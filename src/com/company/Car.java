@@ -1,6 +1,6 @@
 package com.company;
 
-public abstract class Car implements Drivable{
+public abstract class Car implements Drivable, Saleable {
     final String producer;
     final String model;
     final Integer yearOfProduction;

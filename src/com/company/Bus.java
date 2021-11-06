@@ -22,4 +22,18 @@ public class Bus extends Car {
     }
 
 
+    @Override
+    public Double getPrice() {
+        return null;
+    }
+
+    @Override
+    public Human getOwner() {
+        return null;
+    }
+
+    @Override
+    public void sell(Human buyer) throws Exception {
+
+    }
 }
