@@ -1,13 +1,42 @@
 package com.company;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
+import java.net.URL;
 import java.nio.file.FileSystemException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.rmi.ConnectIOException;
 
+
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+
+        URL url = null;
+        try {url = new URL("http://api.nbp.pl/api/exchangerates/rates/A/EUR");} catch (MalformedURLException e) {e.printStackTrace();}
+        HttpURLConnection con = null;
+        try {con = (HttpURLConnection) url.openConnection();} catch (IOException e) {e.printStackTrace();}
+        try {con.setRequestMethod("GET");} catch (ProtocolException e) {e.printStackTrace();}
+        try {int status = con.getResponseCode();} catch (IOException e) {e.printStackTrace();}
+
+        BufferedReader br = new BufferedReader(new InputStreamReader((con.getInputStream())));
+        StringBuilder sb = new StringBuilder();
+        String output;
+        while ((output = br.readLine()) != null) {
+            sb.append(output);
+        }
+        System.out.println(sb);
+
+        //JSONObject json = new JSONObject(new JSONTokener(sb.toString()));
+        //json.getString("EffectiveDate");
+        //json.getString("Mid");
+
+
+        //------------------------------------------------------------------------//
 
         try {
             String sourcePath = "c:/desktop/non_existing_file.txt";
@@ -24,6 +53,8 @@ public class Main {
         } catch (Exception e) {
             System.out.println("jakiś inny błąd, nie mam pojęcia jaki");
         }
+
+        //------------------------------------------------------------------------//
 
 
         PersonalCar fiat = new PersonalCar("fiat", "bravo", 2016);
@@ -89,7 +120,5 @@ public class Main {
         }
 
         System.out.println("sialalalala");
-
-
     }
 }
