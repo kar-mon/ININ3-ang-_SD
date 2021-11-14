@@ -72,6 +72,19 @@ public class Truck extends Car {
             buyer.cash -= this.getPrice();
             this.owner = buyer;
         }
+    }
+
+    public Double getCapacityInTones(){
+        return capacityInTones;
+    }
+
+    public int compareTo(Truck otherTruck){
+        if(this.capacityInTones > otherTruck.capacityInTones){
+            return -1;
+        } else if(this.capacityInTones.equals(otherTruck.capacityInTones)){
+            return 0;
+        } else {return 1;}
 
     }
+
 }
